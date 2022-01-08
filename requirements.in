@@ -1,0 +1,34 @@
+# to compile this file, run the command:
+# pip-compile --output-file requirements.txt requirements.in requirements-dev.in
+# packages for the programming assignments
+ipykernel
+# packages for the final project
+wtforms
+sqlalchemy>1.4
+flask
+flask-sqlalchemy
+flask-bcrypt
+flask-login
+flask-wtf
+email-validator
+flask-limiter
+psycopg2-binary
+gunicorn
+# test and coverage
+flask-testing
+pytest
+coverage
+selenium
+# code quality
+flake8
+requests
+mypy
+pylint
+blinker
+types-requests
+isort
+black
+# accessory
+lorem-text
+bs4
+pep8-naming
