@@ -3,11 +3,14 @@
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
         "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "editor.formatOnPaste": false,
         "editor.defaultFormatter": "ms-python.python",
         "editor.codeActionsOnSave": {
             "source.organizeImports": true
         }
     },
+    "notebook.lineNumbers": "on",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": true,
@@ -24,5 +27,5 @@
         "attr-value-double-quotes": true,
         "doctype-first": false,
         "spec-char-escape": false,
-    }
+    },
 }
