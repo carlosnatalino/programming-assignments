@@ -15,6 +15,7 @@ flask-limiter
 psycopg2-binary
 gunicorn
 # test and coverage
+nose
 flask-testing
 pytest
 coverage
