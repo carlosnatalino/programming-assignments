@@ -1,21 +1,17 @@
 # these imports help us validate that the installation was correct
 import time
+import random
+import matplotlib.pyplot as plt
 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+numbers = []
+for i in range(100):
+    if i < 50:
+        numbers.append(random.randint(0, 10))
+    else:
+        numbers.append(random.randint(10, 20))
 
-# instantiate the driver
-driver = webdriver.Firefox()
-# opens google
-print("opening google...")
-driver.get("https://www.google.com/")
-input("Accept the terms of service, them press any key in this terminal...")
-# types a query
-print("searching for our course...")
-search_box = driver.find_element(By.NAME, "q")
-search_box.send_keys("Chalmers Applied object-oriented programming")
-search_box.submit()
-time.sleep(10)
-# clicks on the first result
-input("Press any key in this terminal to close...")
-driver.quit()
+plt.figure()
+plt.title("If you see this, your installation was successful!")
+plt.plot(numbers)
+plt.show()
+plt.close()

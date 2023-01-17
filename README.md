@@ -1,3 +1,3 @@
-# EEN060/EEN065 boilerplate repository
+# EEN060/EEN065 assignment repository
 
 
