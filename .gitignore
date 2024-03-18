@@ -9,8 +9,6 @@ requirements.txt
 *.so
 flask_session
 *.db
-*.ipynb
-*.py
 
 # Distribution / packaging
 .Python

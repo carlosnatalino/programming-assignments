@@ -1,24 +1,24 @@
 {
+    "editor.rulers": [
+        {
+            "column": 88, // spacing of 1st column from left
+            "color": "#ff0000" // orange
+        },
+    ],
     "[python]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
         "editor.formatOnSave": true,
-        "editor.formatOnSaveMode": "file",
+        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnPaste": false,
-        "editor.defaultFormatter": "ms-python.python",
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         }
     },
-    "notebook.lineNumbers": "on",
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 5000,
     "python.terminal.activateEnvironment": true,
-    "python.formatting.provider": "black",
     "python.testing.pytestEnabled": true,
-    "editor.formatOnPaste": true,
     "terminal.integrated.defaultProfile.windows": "PowerShell",
     "mypy.runUsingActiveInterpreter": true,
     "htmlhint.options": {
@@ -27,5 +27,5 @@
         "attr-value-double-quotes": true,
         "doctype-first": false,
         "spec-char-escape": false,
-    },
+    }
 }

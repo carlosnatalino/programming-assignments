@@ -9,3 +9,34 @@ profile = "black"
 line_length = 88
 src_paths = "."
 skip_gitignore = true
+
+[tool.mypy]
+strict = true
+strict_equality = true
+no_implicit_optional = true
+warn_return_any = true
+warn_unused_configs = true
+warn_redundant_casts = true
+ignore_missing_imports = true
+ignore_missing_imports_per_module = true
+disallow_untyped_decorators = false
+disallow_untyped_defs = true 
+disallow_incomplete_defs = true
+disallow_subclassing_any = false
+disallow_any_unimported = false
+disallow_any_explicit = true
+disallow_any_generics = true
+
+[tool.coverage.run]
+branch = true
+source = ["codeapp"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+omit = ["*tests*", "codeapp/__init__.py"]
+
+[tool.pylint]
+disable="C0114,C0115,C0116,R0903,E1101,C0103,R0914,R1702,R0912,W0105,R0904,R0902,R0801,broad-except,R1732,R0915,C0301"
+enable="useless-suppression"
+ignore=["tests/__init__.py"]

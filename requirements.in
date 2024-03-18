@@ -5,23 +5,17 @@ ipykernel
 jupyter
 notebook
 # packages for the final project
-wtforms
-sqlalchemy>1.4
 flask
-flask-sqlalchemy
-flask-bcrypt
-flask-login
-flask-wtf
-email-validator
-flask-limiter
-psycopg2-binary
 gunicorn
+redis
+types-redis
+python-dotenv
+matplotlib
 # test and coverage
-nose
 flask-testing
+toml
 pytest
 coverage
-selenium
 # code quality
 flake8
 requests
