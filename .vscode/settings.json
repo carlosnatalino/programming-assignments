@@ -16,11 +16,10 @@
             "source.organizeImports": "explicit"
         }
     },
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 5000,
+    "files.autoSave": "off",
     "python.terminal.activateEnvironment": true,
     "python.testing.pytestEnabled": true,
-    "terminal.integrated.defaultProfile.windows": "Terminal",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
     "mypy-type-checker.preferDaemon": true,
     "mypy-type-checker.reportingScope": "workspace",
     "htmlhint.options": {

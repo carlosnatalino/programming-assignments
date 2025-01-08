@@ -11,6 +11,7 @@ redis
 types-redis
 python-dotenv
 matplotlib
+numpy
 # test and coverage
 flask-testing
 toml
