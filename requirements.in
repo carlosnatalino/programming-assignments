@@ -4,6 +4,7 @@
 ipykernel
 jupyter
 notebook
+nbconvert[webpdf]
 # packages for the final project
 flask
 gunicorn
