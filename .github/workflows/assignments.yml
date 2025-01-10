@@ -11,11 +11,11 @@ jobs:
         steps:
         - name: Check access
           run: |
-            curl -s https://onu1.s2.chalmers.se/pnu/check > out.txt
-            cat out.txt
-            grep "Ok" out.txt
+            curl -s https://onu1.s2.chalmers.se/pnu/check | grep "Ok"
         - name: Checkout repository
           uses: actions/checkout@v3
+          with:
+            fetch-depth: 0 # Fetch full history for accurate diff
         - name: Find changed ipynb files
           id: find_notebooks
           run: |
