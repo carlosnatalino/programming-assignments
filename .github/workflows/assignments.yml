@@ -1,0 +1,43 @@
+name: Convert submitted notebook to PDF
+
+on:
+    push:
+        paths:
+            - '**/*.ipynb'
+
+jobs:
+    convert-to-pdf:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check access
+          run: curl https://onu1.s2.chalmers.se/pnu/check
+        - name: Checkout repository
+          uses: actions/checkout@v3
+        - name: Find changed ipynb files
+          id: find_notebooks
+          run: |
+            git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '.ipynb$' > changed_notebooks.txt
+            echo "notebooks=$(cat changed_notebooks.txt | tr '\n' ',')" >> $GITHUB_OUTPUT
+        - name: Setup Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: "3.13"
+        - name: Install dependencies
+          run: |
+            pip install -r requirements_lin.txt
+            python -m playwright install --with-deps
+        - name: Convert Notebooks to PDF
+          run: |
+            IFS=',' read -r -a notebooks <<< "${{ steps.find_notebooks.outputs.notebooks }}"
+            for notebook in "${notebooks[@]}"; do
+              jupyter nbconvert --execute --ExecutePreprocessor.allow_errors=True --to webpdf "$notebook"
+            done
+          env:
+            LC_ALL: C.UTF-8
+            LANG: C.UTF-8
+        # Upload PDFs as artifacts
+        - name: Upload PDF artifacts
+          uses: actions/upload-artifact@v3
+          with:
+            name: notebook-pdfs
+            path: '*.pdf' # Upload all generated PDFs
