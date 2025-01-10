@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Check access
-          run: curl https://onu1.s2.chalmers.se/pnu/check
+          run: curl -s https://onu1.s2.chalmers.se/pnu/check | grep -vqz "VPN"
         - name: Checkout repository
           uses: actions/checkout@v3
         - name: Find changed ipynb files
