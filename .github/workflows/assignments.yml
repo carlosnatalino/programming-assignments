@@ -40,7 +40,9 @@ jobs:
             LANG: C.UTF-8
         # Upload PDFs as artifacts
         - name: Upload PDF artifacts
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
-            name: notebook-pdfs
-            path: '*.pdf' # Upload all generated PDFs
+            name: assignment-pdfs
+            retention-days: 60
+            path: 'assignment*.pdf' # Upload all generated PDFs
+            overwrite: true

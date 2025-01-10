@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=requirements_mac.txt requirements.in
 #
-anyio==4.7.0
+anyio==4.8.0
     # via
     #   httpx
     #   jupyter-server
@@ -34,7 +34,7 @@ beautifulsoup4==4.12.3
     #   nbconvert
 black==24.10.0
     # via -r requirements.in
-bleach==6.2.0
+bleach[css]==6.2.0
     # via nbconvert
 blinker==1.9.0
     # via
@@ -231,7 +231,7 @@ mypy-extensions==1.0.0
     #   mypy
 nbclient==0.10.2
     # via nbconvert
-nbconvert[webpdf]==7.16.4
+nbconvert[webpdf]==7.16.5
     # via
     #   -r requirements.in
     #   jupyter
@@ -253,6 +253,7 @@ notebook-shim==0.2.4
     #   notebook
 numpy==2.2.1
     # via
+    #   -r requirements.in
     #   contourpy
     #   matplotlib
 overrides==7.7.0
@@ -278,7 +279,7 @@ pep8-naming==0.14.1
     # via -r requirements.in
 pexpect==4.9.0
     # via ipython
-pillow==11.0.0
+pillow==11.1.0
     # via matplotlib
 platformdirs==4.3.6
     # via
@@ -311,14 +312,14 @@ pyee==12.0.0
     # via playwright
 pyflakes==3.2.0
     # via flake8
-pygments==2.18.0
+pygments==2.19.1
     # via
     #   ipython
     #   jupyter-console
     #   nbconvert
 pylint==3.3.3
     # via -r requirements.in
-pyparsing==3.2.0
+pyparsing==3.2.1
     # via matplotlib
 pytest==8.3.4
     # via -r requirements.in
@@ -379,7 +380,7 @@ terminado==0.18.1
     #   jupyter-server
     #   jupyter-server-terminals
 tinycss2==1.4.0
-    # via nbconvert
+    # via bleach
 toml==0.10.2
     # via -r requirements.in
 tomlkit==0.13.2
@@ -418,7 +419,7 @@ types-redis==4.6.0.20241004
     # via -r requirements.in
 types-requests==2.32.0.20241016
     # via -r requirements.in
-types-setuptools==75.6.0.20241223
+types-setuptools==75.8.0.20250110
     # via types-cffi
 typing-extensions==4.12.2
     # via

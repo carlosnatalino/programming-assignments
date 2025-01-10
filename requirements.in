@@ -4,7 +4,7 @@
 ipykernel
 jupyter
 notebook
-nbconvert[webpdf]
+nbconvert[webpdf]>=7.16.5
 # packages for the final project
 flask
 gunicorn
