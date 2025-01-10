@@ -13,7 +13,7 @@ jobs:
           run: |
             curl -s https://onu1.s2.chalmers.se/pnu/check > out.txt
             cat out.txt
-            grep -vqz "VPN" out.txt
+            grep "Ok" out.txt
         - name: Checkout repository
           uses: actions/checkout@v3
         - name: Find changed ipynb files
