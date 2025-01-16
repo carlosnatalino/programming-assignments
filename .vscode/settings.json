@@ -1,5 +1,6 @@
 {
     "editor.renderWhitespace": "all",
+    "notebook.lineNumbers": "on",
     "editor.rulers": [
         {
             "column": 88, // spacing of 1st column from left
