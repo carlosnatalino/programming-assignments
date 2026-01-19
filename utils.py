@@ -218,3 +218,81 @@ def validate_python_cell(cell_tag: str, **args: dict[str, Any]) -> None:  # type
         )
     if data["fail"]:
         raise ValueError("The code needs change. Check messages above.")
+
+
+def export_cell_content(cell_tag: str, export_to: str, **args: dict[str, Any]) -> None:
+    filename = os.environ.get("NOTEBOOK_NAME", None)
+    if filename is None:
+        raise ValueError(
+            "The `NOTEBOOK_NAME` environment variable is not set. Please set it to the name of the notebook file."
+        )
+
+    if not os.path.exists(filename):
+        raise ValueError(
+            f"The file {filename} does not exist. Make sure you set the correct notebook name at the beginning of the notebook!"
+        )
+
+    saved_timestamp = os.path.getmtime(filename)
+    saved_date = datetime.fromtimestamp(saved_timestamp)
+    now = datetime.now()
+    delta = now - saved_date
+
+    # Determine a human readable time delta
+    if delta.days > 0:
+        ago = f"{delta.days} days ago"
+    elif delta.seconds >= 3600:
+        hours = delta.seconds // 3600
+        ago = f"{hours} hours ago"
+    elif delta.seconds >= 60:
+        minutes = delta.seconds // 60
+        ago = f"{minutes} minutes ago"
+    else:
+        ago = f"{delta.seconds} seconds ago"
+
+    print(f"Latest saved date of the file: {saved_date} ({ago})")
+
+    src_nb = nbf.read(filename, as_version=4)
+    content = None
+    for cell in src_nb.cells:
+        if cell.cell_type == "code" and cell_tag in cell.metadata.get("tags", []):
+            content = cell.source.split("\n")
+            break
+
+    if content is None:
+        raise ValueError(
+            f"It seems that your notebook file does not have the cell with tag `{cell_tag}`"
+        )
+
+    if "ignore_lines_with" in args:
+        ignore_lines_with = args["ignore_lines_with"]
+        if isinstance(ignore_lines_with, str):
+            ignore_lines_with = [ignore_lines_with]
+        content = [
+            line
+            for line in content
+            if not any(
+                ignore_line_with in line for ignore_line_with in ignore_lines_with
+            )
+        ]
+
+    if "uncomment_lines_with" in args:
+        content_uncomment = []
+        uncomment_lines_with = args["uncomment_lines_with"]
+        if isinstance(uncomment_lines_with, str):
+            uncomment_lines_with = [uncomment_lines_with]
+        for line in content:
+            if any(
+                uncomment_line_with in line
+                for uncomment_line_with in uncomment_lines_with
+            ):
+                line = line.replace("# ", "", 1)
+            content_uncomment.append(line)
+        content = content_uncomment
+
+    # Check if the directory for the output file exists and create if needed
+    output_dir = os.path.dirname(export_to)
+    if output_dir and not os.path.exists(output_dir):
+        os.makedirs(output_dir, exist_ok=True)
+
+    with open(export_to, "wt", encoding="utf-8") as f:
+        f.write("\n".join(content) + "\n")
