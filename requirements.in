@@ -6,15 +6,10 @@ jupyter
 notebook
 nbconvert[webpdf]>=7.16.5
 # packages for the final project
-flask
-gunicorn
-redis
-types-redis
 python-dotenv
 matplotlib
 numpy
 # test and coverage
-flask-testing
 toml
 pytest
 coverage

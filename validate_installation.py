@@ -3,9 +3,9 @@ import datetime
 import getpass
 import os
 import platform
-import random
 
 import matplotlib.pyplot as plt
+import random
 
 numbers = []
 for i in range(100):
@@ -13,6 +13,10 @@ for i in range(100):
         numbers.append(random.randint(0, 10))
     else:
         numbers.append(random.randint(10, 20))
+
+
+
+
 
 plt.figure()
 plt.title(
