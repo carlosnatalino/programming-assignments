@@ -9,9 +9,6 @@ jobs:
     convert-to-pdf:
         runs-on: ubuntu-latest
         steps:
-        - name: Check access
-          run: |
-            curl -s https://onu1.s2.chalmers.se/pnu/check | grep "Ok"
         - name: Checkout repository
           uses: actions/checkout@v3
           with:
