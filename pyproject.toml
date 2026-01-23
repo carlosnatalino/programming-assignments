@@ -30,12 +30,20 @@ disallow_any_explicit = true
 disallow_any_generics = true
 
 [tool.coverage.run]
+source = ["."]
 branch = true
 
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
-omit = ["*test*"]
+omit = ["*test*",
+        "*/site-packages/*",
+        "*/dist-packages/*",
+        "*/lib/*",
+        ".venv/*",
+        "*/venv/*",
+        "validate_installation.py",
+        "utils.py"]
 
 [tool.pylint]
 disable="C0114,C0115,C0116,R0903,E1101,C0103,R0914,R1702,R0912,W0105,R0904,R0902,R0801,broad-except,R1732,R0915,C0301"
